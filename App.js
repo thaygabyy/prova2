@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import DestinationsScreen from './screens/DestinationsScreen';
+import PackagesScreen from './screens/PackagesScreen';
+import RoutesScreen from './screens/RoutesScreen';
+import ExperiencesScreen from './screens/ExperiencesScreen';
+import ReviewsScreen from './screens/ReviewsScreen';
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Destinos" component={DestinationsScreen} />
+        <Tab.Screen name="Pacotes turísticos" component={PackagesScreen} />
+        <Tab.Screen name="Roteiros" component={RoutesScreen} />
+        <Tab.Screen name="Experiências" component={ExperiencesScreen} />
+        <Tab.Screen name="Avaliações" component={ReviewsScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
